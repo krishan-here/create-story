@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Story</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="image/icon.png" type="image/x-icon">
+    <!-- style css  -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="container-all">
+        <div class="row">
+            <div class="col-lg-4 col-md-12">
+                <div class="info">
+
+                    <div class="heading">
+                        <h1><img class="icon" src="image/icon.png" alt=""> stories</h1>
+
+                        <div class="hambarger" onclick="openmenu()">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stories">
+
+                    <a href="/Rohan & Sohan">
+                        <div class="story">
+                            <h2>Rohan & Sohan</h2>
+                        </div>
+                    </a>
+                    <a href="/Nobita & Sizuka">
+                        <div class="story">
+                            <h2>Nobita & Sizuka</h2>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-12">
+                <div class="content-info">
+
+                    <div class="content">
+                        <% content.forEach((part)=>{ %>
+                        <span><%= part%> </span>
+                        <% }); %>
+                    </div>
+                    <div class="write">
+                        <form action="/" method="POST" class="form">
+                            <div class="form-group">
+                                <input type="hidden" name="title" value="<%= title %>">
+                                <textarea name="story" cols="100" rows="5" class="form-control"
+                                    placeholder="Write one or two line What happen next.."
+                                    onpaste="return false;"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-md btn-warning"> add Story </button>
+                            <button type="button" class="btn btn-md btn-outline-secondary clipboard"><i
+                                    class="fas fa-share-square"></i> copy link</button>
+                        </form>
+
+                    </div>
+                    <div class="share">
+                        <p>*Don't spoil fun copy link & share now with your friends!!</p>
+                        <p>*Come back after some time to see what happen in your written story ;)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- font awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <script>
+        const openmenu = () => {
+            let stories = document.querySelector('.stories');
+            let prop = window.getComputedStyle(stories).display;
+            if (prop == "none") {
+                stories.style.display = "unset";
+                stories.style.height = "350px";
+            } else {
+                stories.style.display = "none";
+                stories.style.height = "0px";
+            }
+        };
+
+        var $temp = $("<input>");
+        var $url = $(location).attr('origin');
+
+        $('.clipboard').on('click', function () {
+            $("body").append($temp);
+            $temp.val($url).select();
+            document.execCommand("copy");
+            $temp.remove();
+        });
+    </script>
+</body>
+
+</html>
