@@ -5,11 +5,14 @@ const mongoose = require("mongoose");
 const _ = require("lodash");
 const app = express();
 
-mongoose.connect("mongodb://localhost:27017/storyDB", {
-  useNewUrlParser: false,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://admin-krishan:Kishan@123@cluster0.e5cxf.mongodb.net/storyDB",
+  {
+    useNewUrlParser: false,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 const storyScheme = mongoose.Schema({
   title: String,
